@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Email Automator | Premium</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-wrapper">
+        <header>
+            <div class="brand">
+                <div class="brand-icon"><i class="fas fa-bolt"></i></div>
+                <h1>AI Direct <span class="brand-accent">Automator</span></h1>
+            </div>
+            <div class="header-meta">
+                <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-shield-halved"></i> Secured
+                    with SMTP SSL</span>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            <!-- Sidebar: Generation & Configuration -->
+            <aside class="sidebar">
+                <div class="glass-card">
+                    <div class="panel-title"><i class="fas fa-wand-sparkles"></i> AI Designer</div>
+                    <div class="input-stack">
+                        <div class="field">
+                            <label>What's the goal?</label>
+                            <textarea id="prompt" rows="6"
+                                placeholder="e.g. Write a cold outreach email to a tech lead about our new AI security plugin..."></textarea>
+                        </div>
+                        <div class="field">
+                            <label>Tone of Voice</label>
+                            <input type="text" id="tone" placeholder="Persuasive, Professional..." value="Professional">
+                        </div>
+                        <button id="generate-btn" class="btn btn-primary">
+                            <span id="btn-text">Craft Content</span>
+                            <div id="loader" class="loader hidden"
+                                style="width: 18px; height: 18px; border-width: 2px;"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <div class="panel-title"><i class="fas fa-paperclip"></i> Media Assets</div>
+                    <div class="dropzone" id="drop-zone">
+                        <i class="fas fa-cloud-arrow-up"></i>
+                        <p>Drag files here or browse</p>
+                        <input type="file" id="file-input" multiple class="hidden">
+                    </div>
+                    <div id="file-list" class="file-list"></div>
+                </div>
+            </aside>
+
+            <!-- Main: Editor and Send -->
+            <div class="editor-container">
+                <div class="glass-card editor-surface">
+                    <div class="panel-title"><i class="fas fa-pen-nib"></i> Compose Campaign</div>
+                    <div class="subject-header">
+                        <input type="text" id="email-subject" class="subject-field" placeholder="Untitled Subject">
+                    </div>
+                    <div id="email-body" class="composer" contenteditable="true" spellcheck="false"></div>
+
+                    <div class="send-controls">
+                        <div class="recipients-panel">
+                            <div class="field">
+                                <label>Recipient List</label>
+                                <div style="display: flex; gap: 0.75rem;">
+                                    <input type="email" id="recipient-input" placeholder="someone@example.com"
+                                        style="flex: 1;">
+                                    <button id="add-recipient" class="btn btn-secondary"
+                                        style="width: 48px; padding: 0;" title="Add Recipient">
+                                        <i class="fas fa-user-plus"></i>
+                                    </button>
+                                    <button id="excel-btn" class="btn btn-secondary" style="width: 48px; padding: 0;"
+                                        title="Import from Excel">
+                                        <i class="fas fa-file-excel" style="color: #22c55e;"></i>
+                                    </button>
+                                    <input type="file" id="excel-input" accept=".xlsx, .xls, .csv" class="hidden">
+                                </div>
+                                <div id="recipient-chips" class="chip-container"></div>
+                            </div>
+                        </div>
+
+                        <button id="send-btn" class="btn btn-primary" style="height: 54px; width: 220px;" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Blast Campaign</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast">
+        <div class="toast-icon" id="toast-icon"></div>
+        <div id="toast-msg"></div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
